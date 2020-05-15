@@ -1,0 +1,43 @@
+.logo_movieapp {
+  width: 150px;
+  height: 120px;
+  transition: 0.4s;
+  float: left;
+  border-radius: 50%;
+}
+.but {
+  background-color: transparent;
+  border-color: cornflowerblue;
+  color: cornflowerblue;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.but:hover {
+  background-color: cornflowerblue;
+  color: white;
+}
+.nav-item {
+  padding-left: 50px;
+}
+.color_navbar {
+  background: #780206; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #061161,
+    #780206
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #061161,
+    #780206
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
+
+/*.btn-color {
+  background-color: #00c4cc;
+  color: aliceblue;
+  width: 30%;
+  height: 40px;
+  border-radius: 4px;
+  transition-duration: 0.4s;
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}*/
