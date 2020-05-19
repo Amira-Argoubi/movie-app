@@ -17,6 +17,10 @@
 }
 .nav-item {
   padding-left: 50px;
+  font-size: 18px;
+}
+.nav-item:hover {
+  font-size: 20px;
 }
 .color_navbar {
   background: #780206; /* fallback for old browsers */

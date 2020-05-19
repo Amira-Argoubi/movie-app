@@ -1,28 +1,27 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Link, Route, Switch } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./movieList.css";
-import { Button, ButtonToolbar } from "react-bootstrap";
-import FormAddMovie from "../AddMovie/formAddMovie";
+import { ButtonToolbar } from "react-bootstrap";
+import AddMovie from "../AddMovie/AddNew";
 
 class Movies extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      Caractere: "",
-      movies: this.props.movies,
-      addModalShow: false,
-    };
-  }
+  state = {
+    movies: this.props.movies,
+    addModal: false,
+  };
+
   handleChangeName = (value) => {
     this.setState({
       name: value,
     });
   };
+
   handleChangeDescription = (value) => {
     this.setState({
       description: value,
     });
   };
+
   handleChangeRate = (value) => {
     this.setState({
       rating: value,
@@ -33,20 +32,19 @@ class Movies extends Component {
       image: value,
     });
   };
-  addObjectMovie = (e) => {
+
+  addNew = (e) => {
     this.props.movies.push({
       name: this.state.name,
       description: this.state.description,
       rating: this.state.rating,
       image: this.state.image,
     });
-    //console.log(movies);
     this.setState({ description: "", name: "", rating: "" });
   };
-  /****************************************************Filter Movie By Name ******************************************************** */
 
   render() {
-    let addModalClose = () => this.setState({ addModalShow: false });
+    let addModalClose = () => this.setState({ addModal: false });
     return (
       <div className="displays">
         <div className="addBut">
@@ -54,18 +52,18 @@ class Movies extends Component {
             <button
               className="add"
               variant="primary"
-              onClick={() => this.setState({ addModalShow: true })}
+              onClick={() => this.setState({ addModal: true })}
             >
               Add Movie
             </button>
-            <FormAddMovie
+            <AddMovie
               addfilmName={this.handleChangeName}
               addfilmDescription={this.handleChangeDescription}
               addfilmRate={this.handleChangeRate}
               addfilmImage={this.handleChangeImage}
-              addObjectMovie={this.addObjectMovie}
+              addNew={this.addNew}
               state={this.state}
-              show={this.state.addModalShow}
+              show={this.state.addModal}
               onHide={addModalClose}
             />
           </ButtonToolbar>
@@ -75,7 +73,7 @@ class Movies extends Component {
           {this.props.movies.map((el) => (
             <div className="card">
               <div>
-                <img src={el.image} className="image11" alt="Jocker film" />
+                <img src={el.image} className="image" alt="cardMovie" />
               </div>
               <div>
                 <h3>{el.name}</h3>
@@ -96,12 +94,10 @@ class Movies extends Component {
                 </span>
               </div>
               <div className="btn-card">
-                <Router>
-                  <Link to={"/detail/" + el.id}>
-                    {" "}
-                    <button className="btn-card-detail">More Detail</button>
-                  </Link>
-                </Router>
+                <Link to={"/detail/" + el.id}>
+                  {" "}
+                  <button className="btn-card-detail">More Detail</button>
+                </Link>
               </div>
             </div>
           ))}

@@ -4,7 +4,30 @@ import Logo from "./logoMovieApp.jpg";
 import "./navbar.css";
 
 class Navbar extends Component {
+  state = {
+    sign: false,
+    login: false,
+  };
+
+  onOpenModal = () => {
+    this.setState({ sign: true });
+  };
+
+  onOpenModalLogin = () => {
+    this.setState({ login: true });
+  };
+
+  onCloseModal = () => {
+    this.setState({ sign: false });
+  };
+
+  onCloseModalclose = () => {
+    this.setState({ login: false });
+  };
+
   render() {
+    const { login, sign } = this.state;
+
     return (
       <nav className="navbar navbar-expand-lg navbar-dark color_navbar">
         <img className="logo_movieapp" src={Logo} alt="Log of the movie app" />

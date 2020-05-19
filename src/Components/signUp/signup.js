@@ -9,7 +9,7 @@ const initialState = {
   passwordError: "",
 };
 
-export default class SignInValiationForm extends React.Component {
+export default class Signup extends React.Component {
   state = { initialState };
 
   handleChange = (event) => {
