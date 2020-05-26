@@ -18,7 +18,6 @@ class AddMovie extends Component {
           <Modal.Body>
             <form className="form-row align-items-center">
               <input
-                value={this.props.state.name}
                 name="description"
                 type="text"
                 placeholder="Title"
@@ -28,7 +27,6 @@ class AddMovie extends Component {
                 className="form-control mb-2"
               />
               <input
-                value={this.props.state.description}
                 type="text"
                 name="name"
                 placeholder="Description"
@@ -38,7 +36,6 @@ class AddMovie extends Component {
                 className="form-control mb-2"
               />
               <input
-                value={this.props.state.rating}
                 name="description"
                 type="text"
                 placeholder="Rate"

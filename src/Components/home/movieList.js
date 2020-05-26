@@ -10,6 +10,7 @@ class Movies extends Component {
     addModal: false,
   };
 
+  /**************functions to get new movies informations *********/
   handleChangeName = (value) => {
     this.setState({
       name: value,
@@ -33,8 +34,9 @@ class Movies extends Component {
     });
   };
 
+  /******************function to add new movie******************/
   addNew = (e) => {
-    this.props.movies.push({
+    this.state.movies.push({
       name: this.state.name,
       description: this.state.description,
       rating: this.state.rating,
@@ -43,8 +45,13 @@ class Movies extends Component {
     this.setState({ description: "", name: "", rating: "" });
   };
 
+  /************function to close add modal****************/
+  addModalClose = () => {
+    this.setState({ addModal: false });
+  };
+
+  /////////////// render part/////////////
   render() {
-    let addModalClose = () => this.setState({ addModal: false });
     return (
       <div className="displays">
         <div className="addBut">
@@ -64,7 +71,7 @@ class Movies extends Component {
               addNew={this.addNew}
               state={this.state}
               show={this.state.addModal}
-              onHide={addModalClose}
+              onHide={this.addModalClose}
             />
           </ButtonToolbar>
         </div>

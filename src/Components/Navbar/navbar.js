@@ -66,7 +66,7 @@ class Navbar extends Component {
             />
           </form>
 
-          <Link to={"/signup"}>
+          <Link to={"/signin"}>
             {" "}
             <button
               style={{ background: "transparent " }}
@@ -75,6 +75,9 @@ class Navbar extends Component {
             >
               Sign In
             </button>
+          </Link>
+
+          <Link to={"/signup"}>
             <button
               style={{ background: "transparent " }}
               type="button"

@@ -2,10 +2,12 @@ import React, { Component } from "react";
 import "./home.css";
 import Movies from "./movieList";
 import Footer from "./footer";
+
 class Home extends Component {
   state = {
     rate: [1, 2, 3, 4, 5],
   };
+
   render() {
     return (
       <div className="listMovie">

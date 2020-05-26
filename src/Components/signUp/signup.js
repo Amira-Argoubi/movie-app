@@ -1,94 +1,56 @@
-import React from "react";
+import React, { Component } from "react";
 
-const initialState = {
-  name: "",
-  email: "",
-  password: "",
-  nameError: "",
-  emailError: "",
-  passwordError: "",
-};
-
-export default class Signup extends React.Component {
-  state = { initialState };
-
-  handleChange = (event) => {
-    const isCheckbox = event.target.type === "checkbox";
-    this.setState({
-      [event.target.name]: isCheckbox
-        ? event.target.checked
-        : event.target.value,
-    });
+export default class Signup extends Component {
+  state = {
+    userName: "",
+    userMail: "",
+    userPassword: "",
   };
 
-  validate = () => {
-    let nameError = "";
-    let emailError = "";
-    // let passwordError = "";
-
-    if (!this.state.name) {
-      nameError = "name cannot be blank";
-    }
-
-    if (!this.state.email.includes("@")) {
-      emailError = "invalid email";
-    }
-
-    if (emailError || nameError) {
-      this.setState({ emailError, nameError });
-      return false;
-    }
-
-    return true;
+  getUserName = (e) => {
+    localStorage.setItem("name", e.target.value);
+    this.setState({ name: e.target.value });
   };
 
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const isValid = this.validate();
-    if (isValid) {
-      console.log(this.state);
-    }
+  getUserMail = (e) => {
+    localStorage.setItem("email", e.target.value);
+    this.setState({ userMail: e.target.value });
   };
-
+  getUserPass = (e) => {
+    localStorage.setItem("password", e.target.value);
+    this.setState({ userPassword: e.target.value });
+  };
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
-        <div>
+      <div>
+        <form className="form">
+          <h1> Create an account</h1>
           <input
-            name="name"
-            placeholder="name"
-            value={this.state.name}
-            onChange={this.handleChange}
+            Name="Name"
+            type="text"
+            placeholder="Your name..."
+            onChange={this.getUserName}
           />
-          <div style={{ fontSize: 12, color: "red" }}>
-            {this.state.nameError}
-          </div>
-        </div>
-        <div>
+          <br></br>
           <input
-            name="email"
-            placeholder="email"
-            value={this.state.email}
-            onChange={this.handleChange}
+            type="email"
+            className="inp"
+            id="email"
+            placeholder="Username...."
+            onChange={this.getUserMail}
           />
-          <div style={{ fontSize: 12, color: "red" }}>
-            {this.state.emailError}
-          </div>
-        </div>
-        <div>
+          <br />{" "}
           <input
+            className="inp"
             type="password"
-            name="password"
-            placeholder="password"
-            value={this.state.password}
-            onChange={this.handleChange}
+            id="password"
+            placeholder="Your Password..."
+            onChange={this.getUserPass}
           />
-          <div style={{ fontSize: 12, color: "red" }}>
-            {this.state.passwordError}
-          </div>
-        </div>
-        <button type="submit">submit</button>
-      </form>
+          <br />
+          <button class="botti">Sign Up</button>
+        </form>
+      </div>
     );
   }
 }
