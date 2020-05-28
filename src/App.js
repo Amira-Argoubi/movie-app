@@ -7,6 +7,7 @@ import Home from "./Components/home/home";
 import Detail from "./Components/home/moreDetail";
 import Favoris from "./Components/home/favouriteMovie";
 import Signup from "./Components/signUp/signup";
+import SignIn from "./Components/signIn/signin";
 import Tof1 from "./Components/home/film1.jpg";
 import Tof2 from "./Components/home/film2.jpg";
 import Tof3 from "./Components/home/film3.jpg";
@@ -15,9 +16,10 @@ import Tof5 from "./Components/home/film5.jpg";
 import Tof6 from "./Components/home/film6.jpg";
 import Tof7 from "./Components/home/film7.jpg";
 import Tof8 from "./Components/home/film8.jpg";
+import Loader from "./Components/loader";
 
 class App extends Component {
-  /*******tableau des films*******/
+  /*******tableau des films comme state*******/
   movies = [
     {
       name: "The Mask",
@@ -84,8 +86,9 @@ class App extends Component {
       id: 8,
     },
   ];
-  /*******creation of state**************/
+  /****creation of state*****/
   state = {
+    loading: true,
     movies: this.movies,
     favourites: [],
   };
@@ -120,11 +123,10 @@ class App extends Component {
   ////////////////////function to delete movie from favoris///////////////
   removeMovie = (e) => {
     alert("Movie is deleted");
-    let a = "";
+
     let c = [];
     for (let i = 0; i < this.state.favourites.length; i++) {
       if (e === this.state.favourites[i]) {
-        a += i;
         c = [...this.state.favourites.splice(1, 1)];
       }
     }
@@ -132,8 +134,19 @@ class App extends Component {
       favourites: c,
     });
   };
+  /*****Function loading********* */
+  componentWillMount() {
+    setTimeout(() => {
+      this.setState({
+        loading: false,
+      });
+    }, 5000);
+  }
 
   render() {
+    if (this.state.loading) {
+      return <Loader />;
+    }
     return (
       <Router>
         <div className="App">
@@ -158,6 +171,9 @@ class App extends Component {
                 <Detail el={el} />
               </Route>
             ))}
+            <Route path={"/signin"}>
+              <SignIn />
+            </Route>
             <Route path={"/signup"}>
               <Signup />
             </Route>
